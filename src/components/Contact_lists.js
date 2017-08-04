@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "./Card";
+import NewCard from "./NewCard";
 import SearchBar from "./SearchBar";
 import base from "../api/base"
 
@@ -27,6 +28,7 @@ class ContactLists extends React.Component {
     };
 
     this.searchContact = this.searchContact.bind(this);
+    this.addContact = this.addContact.bind(this)
   }
 
   componentWillMount(){
@@ -51,6 +53,12 @@ class ContactLists extends React.Component {
     console.log(name);
   }
 
+  addContact(details){
+    const prevList = this.state.contact_list
+    const new_list = [...prevList, details]
+    this.setState({contact_list: new_list})
+  }
+
   render() {
     return (
       <div>
@@ -62,6 +70,7 @@ class ContactLists extends React.Component {
           {this.state.contact_list.map((contact, index) =>
             <Card details={contact} key={index} />
           )}
+          <NewCard addContact={this.addContact}/>
         </div>
       </div>
     );
