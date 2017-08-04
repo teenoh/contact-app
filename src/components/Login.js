@@ -15,10 +15,11 @@ class Login extends Component {
     handleSubmit(){
         this.setState({authenticated: true})
     }
+      
 
 
   render() {
-    if (this.state.authenticated == true){
+    if (this.state.authenticated === true){
         return (
             <Redirect to={{
                 pathname: '/'

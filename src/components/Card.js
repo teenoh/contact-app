@@ -1,18 +1,20 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types'
 
 class Card extends Component {
   render() {
+      let {name, img, number, email} = this.props.details 
     return (
       <div className="col-sm-3">
         <div className="card">
-          <img className="card-img-top" src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" alt="banana"/>
+          <img className="card-img-top" src={img} alt="banana"/>
           <div className="card-block">
-            <h4 className="card-title">Name</h4>
+            <h4 className="card-title">{name}</h4>
             <p className="card-text">
-              Phone Number: 08109912890
+              Phone Number: {number}
             </p>
             <p className="card-text">
-              Email: teenoh@gmail.com
+              Email: {email}
             </p>
             
           </div>
@@ -24,5 +26,15 @@ class Card extends Component {
     );
   }
 }
+
+Card.propTypes = {
+    details: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        img: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired, 
+    }),
+}
+
 
 export default Card;
