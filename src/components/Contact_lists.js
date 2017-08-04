@@ -30,7 +30,17 @@ class ContactLists extends React.Component {
   }
 
   componentWillMount(){
-    
+    this.contactsRef = base.syncState('contacts'
+    , {
+      context: this,
+      state: 'contact_list',
+      asArray: true
+    })
+  }
+
+
+  componentWillUnmount(){
+    base.removeBinding(this.contactsRef);
   }
 
   searchContact(name) {
