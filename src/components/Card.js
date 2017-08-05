@@ -1,19 +1,36 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import NewCard from "./NewCard"
 
 class Card extends Component {
   constructor(props){
     super(props);
 
+    this.state = {
+      edit: false,
+    }
+
     this.handleDelete = this.handleDelete.bind(this)
+    this.handleEdit = this.handleEdit.bind(this)
   }
 
   handleDelete(){
     this.props.deleteContact(this.props.details);
   }
 
+    handleEdit(){
+    this.setState({edit: true})
+  }
+
   render() {
     let { name, img, number, email } = this.props.details;
+
+    if(this.state.edit === true){
+      return (
+        <NewCard edit_details={this.props.details} edit={true} editContact={this.props.editContact}/>
+      )
+    }
+
     return (
       <div className="col-sm-3">
         <div className="card">
@@ -30,7 +47,7 @@ class Card extends Component {
             </p>
           </div>
           <div className="card-footer">
-            <button className="btn btn-primary edit-btn btn-sm">Edit</button>
+            <button onClick={this.handleEdit} className="btn btn-primary edit-btn btn-sm">Edit</button>
             <button onClick={this.handleDelete} className="btn btn-danger btn-sm">Delete</button>
           </div>
         </div>

@@ -31,6 +31,7 @@ class ContactLists extends React.Component {
     this.searchContact = this.searchContact.bind(this);
     this.addContact = this.addContact.bind(this);
     this.deleteContact = this.deleteContact.bind(this);
+    this.editContact = this.editContact.bind(this);
   }
 
   componentDidMount() {
@@ -39,13 +40,12 @@ class ContactLists extends React.Component {
       state: "contact_list",
       asArray: true
     });
-    
-    base.bindToState('contacts', {
+
+    base.bindToState("contacts", {
       context: this,
-      state: 'search_list',
+      state: "search_list",
       asArray: true
     });
-
   }
 
   componentWillUnmount() {
@@ -74,6 +74,25 @@ class ContactLists extends React.Component {
     });
   }
 
+  editContact(new_details, old_details) {
+    const prevList = this.state.contact_list;
+    const newContact = prevList
+      .filter(
+        item =>
+          item.name === old_details.name && item.number === old_details.number
+      )
+      .map(item => {
+        return item = new_details;
+      });
+
+      console.log(newContact + "  new contact")
+      const newList = prevList.concat(newContact)
+      console.log(newList + "  new lisst")
+      // this.setState({
+      //   contact_list: newList
+      // })
+  }
+
   deleteContact(details) {
     const prev_list = this.state.contact_list;
     const new_list = prev_list.filter(
@@ -98,9 +117,12 @@ class ContactLists extends React.Component {
               details={contact}
               key={index}
               deleteContact={this.deleteContact}
+              editContact={this.editContact}
             />
           )}
-          <NewCard addContact={this.addContact} />
+          <NewCard
+            addContact={this.addContact}
+          />
         </div>
       </div>
     );

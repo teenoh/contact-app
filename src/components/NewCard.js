@@ -9,7 +9,8 @@ class NewCard extends Component {
       name: "",
       number: "",
       img: "",
-      email: ""
+      email: "",
+      edit: this.props.edit
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -34,31 +35,41 @@ class NewCard extends Component {
   handleSubmit(e){
     e.preventDefault();
     const newContact = this.state
-    this.props.addContact(newContact)
+    if (this.state.edit === true ){
+      this.props.editContact(newContact, this.props.edit_details) 
+    }
+    else {
+      this.props.addContact(newContact)
+    }
+    
   }
 
+
+
   render() {
+      let { name, img, number, email } = this.props.edit_details;
+    
     return (
       <div className="col-sm-3">
         <div className="card">
           <div className="card-block">
-            <h4 className="card-title">Add Contact</h4>
+            <h4 className="card-title">{this.state.edit === true ? 'Edit Contact' : 'Add Contact'}</h4>
             <form onSubmit={this.handleSubmit}>
             <p className="card-text">
               Name:
-              <input className="form-control" onChange={this.handleChangeName.bind(this)} type="text"/>
+              <input className="form-control" default={name} onChange={this.handleChangeName.bind(this)} type="text"/>
             </p>
             <p className="card-text">
               Email: 
-              <input className="form-control" onChange={this.handleChangeEmail.bind(this)} type="email"/>
+              <input className="form-control" default={email} onChange={this.handleChangeEmail.bind(this)} type="email"/>
             </p>
             <p className="card-text">
               Phone: 
-              <input className="form-control" onChange={this.handleChangeNumber.bind(this)} type="text"/>
+              <input className="form-control" default={number} onChange={this.handleChangeNumber.bind(this)} type="text"/>
             </p>
             <p className="card-text">
               Image Link: 
-              <input className="form-control" onChange={this.handleChangeImage.bind(this)} type="text"/>
+              <input className="form-control" default={img} onChange={this.handleChangeImage.bind(this)} type="text"/>
             </p>
             <input className="form-control btn btn-primary login-btn" type="submit"/>
             </form>
@@ -71,8 +82,25 @@ class NewCard extends Component {
 }
 
  NewCard.propTypes = {
-    addContact: PropTypes.func.isRequired,
+    addContact: PropTypes.func,
+    editContact: PropTypes.func,
+    edit: PropTypes.bool,
+    edit_details: PropTypes.shape({
+      name: PropTypes.string,
+    img: PropTypes.string,
+    number: PropTypes.string,
+    email: PropTypes.string
+    })
 }
 
+NewCard.defaultProps = {
+  edit: false,
+  edit_details: {
+    name: "",
+    img: "",
+    number: "",
+    email: ""
+  }
+}
 
 export default NewCard;
