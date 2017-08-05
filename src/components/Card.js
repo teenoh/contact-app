@@ -2,6 +2,16 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class Card extends Component {
+  constructor(props){
+    super(props);
+
+    this.handleDelete = this.handleDelete.bind(this)
+  }
+
+  handleDelete(){
+    this.props.deleteContact(this.props.details);
+  }
+
   render() {
     let { name, img, number, email } = this.props.details;
     return (
@@ -13,7 +23,7 @@ class Card extends Component {
               {name}
             </h4>
             <p className="card-text">
-              Phone Number: {number}
+              Phone: {number}
             </p>
             <p className="card-text">
               Email: {email}
@@ -21,7 +31,7 @@ class Card extends Component {
           </div>
           <div className="card-footer">
             <button className="btn btn-primary edit-btn btn-sm">Edit</button>
-            <button className="btn btn-danger btn-sm">Delete</button>
+            <button onClick={this.handleDelete} className="btn btn-danger btn-sm">Delete</button>
           </div>
         </div>
       </div>
@@ -35,7 +45,9 @@ Card.propTypes = {
     img: PropTypes.string.isRequired,
     number: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired
-  })
+  }),
+
+  deleteContact: PropTypes.func.isRequired,
 };
 
 export default Card;

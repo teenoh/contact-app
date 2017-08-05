@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import cloudinary from 'cloudinary-core'
 import PropTypes from 'prop-types'
 
 class NewCard extends Component {
@@ -54,7 +53,7 @@ class NewCard extends Component {
               <input className="form-control" onChange={this.handleChangeEmail.bind(this)} type="email"/>
             </p>
             <p className="card-text">
-              Phone Number: 
+              Phone: 
               <input className="form-control" onChange={this.handleChangeNumber.bind(this)} type="text"/>
             </p>
             <p className="card-text">
