@@ -16,7 +16,6 @@ class App extends Component {
           <div className="container">
             <Switch>
               <Route exact path="/" component={Login} />
-              
               <Route render={() => <p>Page not Found!!</p>} />
             </Switch>
           </div>
