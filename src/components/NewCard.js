@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import cloudinary from 'cloudinary-core'
 import PropTypes from 'prop-types'
 
 class NewCard extends Component {
@@ -76,22 +77,3 @@ class NewCard extends Component {
 
 
 export default NewCard;
-
-// <div className="col-sm-3">
-//         <div className="card">
-//           <img className="card-img-top" src={img} alt="banana"/>
-//           <div className="card-block">
-//             <h4 className="card-title">{name}</h4>
-//             <p className="card-text">
-//               Phone Number: {number}
-//             </p>
-//             <p className="card-text">
-//               Email: {email}
-//             </p>
-            
-//           </div>
-//           <div className="card-footer">
-//             <small className="text-muted">Last updated 3 mins ago</small>
-//           </div>
-//         </div>
-//       </div>

@@ -24,20 +24,22 @@ class ContactLists extends React.Component {
     super(props);
 
     this.state = {
-      contact_list: list
+      contact_list: list,
+      search_list: [],
     };
 
     this.searchContact = this.searchContact.bind(this);
     this.addContact = this.addContact.bind(this)
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.contactsRef = base.syncState('contacts'
     , {
       context: this,
       state: 'contact_list',
       asArray: true
     })
+    this.setState({contact_list: list})
   }
 
 
@@ -50,7 +52,9 @@ class ContactLists extends React.Component {
       item => item.name.toLowerCase().includes(name.toLowerCase())
     );
     this.setState({ contact_list: new_list });
-    console.log(name);
+    if (name === ""){
+      this.setState({contact_list: list})
+    }
   }
 
   addContact(details){
