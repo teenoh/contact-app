@@ -34,9 +34,16 @@ class NewCard extends Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const newContact = this.state
+    let newContact = {}
+    newContact.name = this.state.name;
+    newContact.number = this.state.number;
+    newContact.img = this.state.img;
+    newContact.email = this.state.email;
+
     if (this.state.edit === true ){
-      this.props.editContact(newContact, this.props.edit_details) 
+      this.props.editContact(newContact, this.props.edit_details.id)
+      this.props.handleEdit(false)
+      this.setState({edit: false})
     }
     else {
       this.props.addContact(newContact)
@@ -84,6 +91,7 @@ class NewCard extends Component {
  NewCard.propTypes = {
     addContact: PropTypes.func,
     editContact: PropTypes.func,
+    handleEdit: PropTypes.func,
     edit: PropTypes.bool,
     edit_details: PropTypes.shape({
       name: PropTypes.string,

@@ -18,7 +18,11 @@ class Card extends Component {
     this.props.deleteContact(this.props.details);
   }
 
-    handleEdit(){
+    handleEdit(editStatus){
+    if (editStatus === false){
+        return this.setState({edit: false})
+    }
+
     this.setState({edit: true})
   }
 
@@ -27,7 +31,7 @@ class Card extends Component {
 
     if(this.state.edit === true){
       return (
-        <NewCard edit_details={this.props.details} edit={true} editContact={this.props.editContact}/>
+        <NewCard edit_details={this.props.details} edit={true} handleEdit={this.handleEdit} editContact={this.props.editContact}/>
       )
     }
 

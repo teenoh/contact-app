@@ -9,13 +9,15 @@ const list = [
     name: "Teenoh",
     img: "https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg",
     number: "081923320",
-    email: "teenoh@gmail.com"
+    email: "teenoh@gmail.com",
+    id: 1,
   },
   {
     name: "Chibbie",
     img: "https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg",
     number: "081243556",
-    email: "chibbie@gmail.com"
+    email: "chibbie@gmail.com",
+    id: 2,
   }
 ];
 
@@ -67,6 +69,7 @@ class ContactLists extends React.Component {
 
   addContact(details) {
     const prevList = this.state.contact_list;
+    details.id = prevList.length + 1
     const new_list = [...prevList, details];
     this.setState({
       contact_list: new_list,
@@ -74,23 +77,22 @@ class ContactLists extends React.Component {
     });
   }
 
-  editContact(new_details, old_details) {
+  editContact(new_details, old_id) {
     const prevList = this.state.contact_list;
     const newContact = prevList
       .filter(
         item =>
-          item.name === old_details.name && item.number === old_details.number
+          item.id !== old_id
       )
-      .map(item => {
-        return item = new_details;
-      });
-
-      console.log(newContact + "  new contact")
-      const newList = prevList.concat(newContact)
-      console.log(newList + "  new lisst")
-      // this.setState({
-      //   contact_list: newList
-      // })
+    new_details.id = old_id
+    const newList = newContact.concat(new_details)
+      
+    console.log(newContact)
+      
+    console.log(newList)
+       this.setState({
+        contact_list: newList
+      })
   }
 
   deleteContact(details) {
