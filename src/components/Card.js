@@ -36,7 +36,7 @@ class Card extends Component {
     }
 
     return (
-      <div className="col-sm-3">
+      <div className="col-sm-6 col-md-4">
         <div className="card">
           <img className="card-img-top" src={img} alt="banana" />
           <div className="card-block">

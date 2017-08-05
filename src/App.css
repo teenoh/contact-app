@@ -34,3 +34,20 @@
   margin-left: 0;
   margin-right: 8px;
 }
+
+.facebook,
+.twitter,
+.github {
+  display: block;
+  margin: 10px auto;
+}
+
+.facebook {
+  }
+
+.twitter{
+  background-color: #1da1f2;
+}
+
+.github{
+  }

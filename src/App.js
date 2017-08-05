@@ -15,8 +15,8 @@ class App extends Component {
           <Navi />
           <div className="container">
             <Switch>
-              <Route exact path="/" component={Contact_lists} />
-              <Route exact path="/login" component={Login} />
+              <Route exact path="/" component={Login} />
+              
               <Route render={() => <p>Page not Found!!</p>} />
             </Switch>
           </div>

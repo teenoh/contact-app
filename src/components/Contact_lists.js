@@ -79,8 +79,7 @@ class ContactLists extends React.Component {
 
   editContact(new_details, old_id) {
     const prevList = this.state.contact_list;
-    const newContact = prevList
-      .filter(
+    const newContact = prevList.filter(
         item =>
           item.id !== old_id
       )
