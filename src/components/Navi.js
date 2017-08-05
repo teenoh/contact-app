@@ -22,9 +22,9 @@ class Navi extends Component {
             </NavLink>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <NavLink className="nav-item nav-link" activeClassName="active" exact to="/Login">
+          {/*<NavLink className="nav-item nav-link" activeClassName="active" exact to="/Login">
                 Login
-            </NavLink>
+          </NavLink>*/}
           </div>
         </div>
       </nav>
