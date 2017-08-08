@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Contact_lists from "./components/Contact_lists";
+//import ContactLists from "./components/Contact_lists";
 import Navi from "./components/Navi";
 import Login from "./components/Login";
 import "./App.css";

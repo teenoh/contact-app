@@ -36,9 +36,9 @@ class Card extends Component {
     }
 
     return (
-      <div className="col-sm-6 col-md-4">
+      <div className="col-sm-6 col-md-4 col-lg-3">
         <div className="card">
-          <img className="card-img-top" src={img} alt="banana" />
+          <img className="card-img-top" src={img} alt="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" />
           <div className="card-block">
             <h4 className="card-title">
               {name}

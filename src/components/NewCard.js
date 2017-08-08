@@ -16,8 +16,21 @@ class NewCard extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount(){
+    if (this.props.edit === true){
+      let newState = {...this.props.edit_details};
+      this.setState({
+        name: newState.name,
+        number: newState.number,
+        img: newState.img,
+        email: newState.email,
+      })
+    }
+  }
+
   handleChangeName(e){
     this.setState({name: e.target.value})
+    console.log(e.target.value)
   }
 
   handleChangeEmail(e){
@@ -54,8 +67,6 @@ class NewCard extends Component {
 
 
   render() {
-      let { name, img, number, email } = this.props.edit_details;
-    
     return (
       <div className="col-sm-3">
         <div className="card">
@@ -64,19 +75,19 @@ class NewCard extends Component {
             <form onSubmit={this.handleSubmit}>
             <p className="card-text">
               Name:
-              <input className="form-control" default={name} onChange={this.handleChangeName.bind(this)} type="text"/>
+              <input className="form-control" value={this.state.name} onChange={this.handleChangeName.bind(this)} type="text" required/>
             </p>
             <p className="card-text">
               Email: 
-              <input className="form-control" default={email} onChange={this.handleChangeEmail.bind(this)} type="email"/>
+              <input className="form-control" value={this.state.email} onChange={this.handleChangeEmail.bind(this)} type="email" required/>
             </p>
             <p className="card-text">
               Phone: 
-              <input className="form-control" default={number} onChange={this.handleChangeNumber.bind(this)} type="text"/>
+              <input className="form-control" value={this.state.number} onChange={this.handleChangeNumber.bind(this)} type="text" required/>
             </p>
             <p className="card-text">
               Image Link: 
-              <input className="form-control" default={img} onChange={this.handleChangeImage.bind(this)} type="text"/>
+              <input className="form-control" value={this.state.img} onChange={this.handleChangeImage.bind(this)} type="text" required/>
             </p>
             <input className="form-control btn btn-primary login-btn" type="submit"/>
             </form>

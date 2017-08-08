@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 //import base from "../api/base"
 import firebase from 'firebase'
 //import {Link} from 'react-router-dom'
-import Contact_lists from "./Contact_lists"
+import ContactLists from "./Contact_lists"
 
 class Login extends Component {
   constructor(props) {
@@ -135,7 +135,7 @@ class Login extends Component {
     // }
 
     return (
-      <Contact_lists />
+      <ContactLists />
     );
   }
 }
